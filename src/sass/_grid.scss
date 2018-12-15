@@ -1,0 +1,57 @@
+// Create container
+div, main, header, footer{
+    &[#{$grid-prop-name}]{
+        display: flex;
+    }
+}
+
+// Defines if need breakpoint query or not
+@mixin media-builder($breakpoint, $direction:'min') {
+    @if ($breakpoint == 0 ){
+        @content;
+    } @else{
+        @media screen and (#{$direction}-width: $breakpoint * 1px){
+            @content;
+        }
+    }
+}
+
+// Create props with breakpoint and column size
+@mixin grid-builder($bp, $breakpoint, $grid-column-count) {
+    @include media-builder($breakpoint){
+        // column width
+        @for $i from 1 through $grid-column-count {
+            [#{$bp}#{$width-prop-name}#{$i}]{
+                flex-basis: (100 / ($grid-column-count / $i)) * 1%;        
+            }
+        }
+        // column offset
+        @for $i from 1 through $grid-column-count {
+            [#{$bp}#{$offset-prop-name}#{$i}]{
+                margin-left: (100 / ($grid-column-count / $i)) * 1%;        
+            }
+        }
+    }
+}
+
+// Map array to gerenate all style props
+@each $bp, $breakpoint in $map-grid-bp {
+    @include grid-builder($bp, $breakpoint, $grid-column-count);
+}
+
+// 
+@each $bp, $breakpoint in $map-grid-bp {
+    @if ($bp == ''){
+        $bp: $grid-bp-xs-prop-name;
+    }    
+    @include media-builder($breakpoint){
+        [#{$hidden-prop-name}#{$bp}#{$up-prop-name}]{
+            display: none!important;
+        }
+    }
+    @include media-builder($breakpoint - 1, 'max'){
+        [#{$hidden-prop-name}#{$bp}#{$down-prop-name}]{
+            display: none!important;
+        }
+    }
+}

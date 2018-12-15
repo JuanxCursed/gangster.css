@@ -1,0 +1,27 @@
+{
+  "name": "gangster.css",
+  "version": "1.0.0",
+  "description": "Gangster.CSS Framework",
+  "main": "/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanxcursed/gangster.css.git"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "rwd",
+    "responsive",
+    "flex",
+    "flex-based"
+  ],
+  "author": "Juan Felipe <juan@marriedgames.com.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juanxcursed/gangster.css/issues"
+  },
+  "homepage": "https://github.com/juanxcursed/gangster.css#readme"
+}

@@ -1,0 +1,45 @@
+/* 
+    Table of contents
+
+    - Pros names
+    - Grid
+    - Fonts
+*/
+
+// ==================================================
+// Grid
+// ==================================================
+$grid-prop-name: 'grid';
+$width-prop-name: 'w-';
+$offset-prop-name: 'o-';
+$hidden-prop-name: 'h-';
+$grid-bp-xs-prop-name: 'xs-';
+$grid-bp-sm-prop-name: 'sm-';
+$grid-bp-md-prop-name: 'md-';
+$grid-bp-lg-prop-name: 'lg-';
+$grid-bp-xl-prop-name: 'xl-';
+$up-prop-name: 'up';
+$down-prop-name: 'down';
+// ==================================================
+// Grid
+// ==================================================
+$grid-column-count: 6;
+$grid-column-gap: 15px;
+$grid-column-padding: 15px;
+
+$grid-bp-sm: 600;
+$grid-bp-md: 768;
+$grid-bp-lg: 992;
+$grid-bp-xl: 1200;
+
+$map-grid-bp:(
+    '':0,
+    #{$grid-bp-sm-prop-name}: $grid-bp-sm,
+    #{$grid-bp-md-prop-name}: $grid-bp-md,
+    #{$grid-bp-lg-prop-name}: $grid-bp-lg,
+    #{$grid-bp-xl-prop-name}: $grid-bp-xl
+);
+
+// ==================================================
+// Fonts
+// ==================================================
