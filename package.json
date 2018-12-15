@@ -1,7 +1,7 @@
 {
   "name": "gangster.css",
-  "version": "1.0.0",
-  "description": "Gangster.CSS Framework",
+  "version": "0.0.01-alpha",
+  "description": "Gangster CSS is RWD, semantic, mobile-first, flex-based CSS frameworknpm login",
   "main": "/js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
