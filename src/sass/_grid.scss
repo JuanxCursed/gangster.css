@@ -55,3 +55,32 @@ div, main, header, footer{
         }
     }
 }
+
+
+[column]{
+    flex-direction: column
+}
+[row]{
+    flex-direction: row
+}
+[start]{
+    justify-content: flex-start
+}
+[end]{
+    justify-content: flex-end
+}
+[center]{
+    justify-content: center
+}
+[between]{
+    justify-content: space-between
+}
+
+[around]{
+    justify-content: space-around
+}
+
+[evenly]{
+    justify-content: space-evenly
+}
+
