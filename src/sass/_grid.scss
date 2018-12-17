@@ -1,86 +1,85 @@
 // Create container
-div, main, header, footer{
-    &[#{$grid-prop-name}]{
-        display: flex;
-    }
+div,
+main,
+header,
+footer {
+  &[#{$grid-prop-name}] {
+    display: flex;
+  }
 }
 
 // Defines if need breakpoint query or not
-@mixin media-builder($breakpoint, $direction:'min') {
-    @if ($breakpoint == 0 ){
-        @content;
-    } @else{
-        @media screen and (#{$direction}-width: $breakpoint * 1px){
-            @content;
-        }
+@mixin media-builder($breakpoint, $direction: "min") {
+  @if ($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (#{$direction}-width: $breakpoint * 1px) {
+      @content;
     }
+  }
 }
 
 // Create props with breakpoint and column size
 @mixin grid-builder($bp, $breakpoint, $grid-column-count) {
-    @include media-builder($breakpoint){
-        // column width
-        @for $i from 1 through $grid-column-count {
-            [#{$bp}#{$width-prop-name}#{$i}]{
-                flex-basis: (100 / ($grid-column-count / $i)) * 1%;        
-            }
-        }
-        // column offset
-        @for $i from 1 through $grid-column-count {
-            [#{$bp}#{$offset-prop-name}#{$i}]{
-                margin-left: (100 / ($grid-column-count / $i)) * 1%;        
-            }
-        }
+  @include media-builder($breakpoint) {
+    // column width
+    @for $i from 1 through $grid-column-count {
+      [#{$bp}#{$width-prop-name}#{$i}] {
+        flex-basis: (100 / ($grid-column-count / $i)) * 1%;
+      }
     }
+    // column offset
+    @for $i from 1 through $grid-column-count {
+      [#{$bp}#{$offset-prop-name}#{$i}] {
+        margin-left: (100 / ($grid-column-count / $i)) * 1%;
+      }
+    }
+  }
 }
 
 // Map array to gerenate all style props
 @each $bp, $breakpoint in $map-grid-bp {
-    @include grid-builder($bp, $breakpoint, $grid-column-count);
+  @include grid-builder($bp, $breakpoint, $grid-column-count);
 }
 
-// 
+//
 @each $bp, $breakpoint in $map-grid-bp {
-    @if ($bp == ''){
-        $bp: $grid-bp-xs-prop-name;
-    }    
-    @include media-builder($breakpoint){
-        [#{$hidden-prop-name}#{$bp}#{$up-prop-name}]{
-            display: none!important;
-        }
+  @if ($bp == "") {
+    $bp: $grid-bp-xs-prop-name;
+  }
+  @include media-builder($breakpoint) {
+    [#{$hidden-prop-name}#{$bp}#{$up-prop-name}] {
+      display: none !important;
     }
-    @include media-builder($breakpoint - 1, 'max'){
-        [#{$hidden-prop-name}#{$bp}#{$down-prop-name}]{
-            display: none!important;
-        }
+  }
+  @include media-builder($breakpoint - 1, "max") {
+    [#{$hidden-prop-name}#{$bp}#{$down-prop-name}] {
+      display: none !important;
     }
+  }
 }
 
-
-[column]{
-    flex-direction: column
+[column] {
+  flex-direction: column;
 }
-[row]{
-    flex-direction: row
+[row] {
+  flex-direction: row;
 }
-[start]{
-    justify-content: flex-start
+[content-start] {
+  justify-content: flex-start;
 }
-[end]{
-    justify-content: flex-end
+[content-end] {
+  justify-content: flex-end;
 }
-[center]{
-    justify-content: center
+[content-center] {
+  justify-content: center;
 }
-[between]{
-    justify-content: space-between
+[content-between] {
+  justify-content: space-between;
 }
-
-[around]{
-    justify-content: space-around
+[content-around] {
+  justify-content: space-around;
 }
-
-[evenly]{
-    justify-content: space-evenly
+[content-evenly] {
+  justify-content: space-evenly;
 }
-
