@@ -11,3 +11,35 @@ $blue:(
     'shade': #0000ff,
     'accents': #0000ff,
 );
+
+@function diff-color($first, $second){
+    $sat: saturation($first) - saturation($second);
+    $lig: lightness($first) - lightness($second);
+    $ch-sat: if($sat > 0, 'desaturate', 'saturate');
+    $ch-lig: if($lig > 0, 'darken', 'lighten');
+
+    @return(
+        arrange-hue: -(hue($first)) - (hue($second)),
+        #{$ch-sat}: abs($sat),
+        #{$ch-lig}: abs($lig)
+    );
+}
+
+@function diff-palette($palette){
+    $root: map-get($palette, 'root');
+    $colors: map-get($palette, 'colors');
+    $diffColors:();
+    @each $color in $colors {
+        $diffColors: append($diffColors, color-diff($root,$color));
+    }
+
+    @return $diffColors;
+}
+
+@function set-diff($color, $diff) {
+    @each $function, $value in $diff {
+      $color: call($function, $color, $value);
+    }
+  
+    @return $color;
+  }
