@@ -42,10 +42,16 @@ footer {
   @include grid-builder($bp, $breakpoint, $grid-column-count);
 }
 
-//
 @each $bp, $breakpoint in $map-grid-bp {
+    $index: index(($map-grid-bp), ($bp $breakpoint)) - 1;
   @if ($bp == "") {
     $bp: $grid-bp-xs-prop-name;
+
+    [boxed] {
+        margin: 0 auto;
+        max-width: $boxed-limit * 1px;
+        width: $boxed-size - $boxed-step * $index * 1%;
+    }
   }
   @include media-builder($breakpoint) {
     [#{$hidden-prop-name}#{$bp}#{$up-prop-name}] {
@@ -55,6 +61,9 @@ footer {
   @include media-builder($breakpoint - 1, "max") {
     [#{$hidden-prop-name}#{$bp}#{$down-prop-name}] {
       display: none !important;
+    }    
+    [boxed] {
+        width: $boxed-size - $boxed-step * $index * 1%;
     }
   }
 }
