@@ -1,0 +1,37 @@
+$helper-step: 1;
+$helper-ammount: 5;
+
+$padding-prop-name: "p-";
+$margin-prop-name: "m-";
+$border-prop-name: "b-";
+
+$side-top-prop-name: "t-";
+$side-right-prop-name: "r-";
+$side-bottom-prop-name: "b-";
+$side-left-prop-name: "l-";
+
+$map-props: (
+    #{$padding-prop-name}: "padding", 
+    #{$margin-prop-name}: "margin",
+    #{$border-prop-name}: "border",
+);
+
+$map-props-sides:(
+    #{$side-top-prop-name}: 'top',
+    #{$side-right-prop-name}: 'right',
+    #{$side-bottom-prop-name}: 'bottom',
+    #{$side-left-prop-name}: 'left'
+);
+
+@each $prop-name, $prop in $map-props {
+    @for $i from 0 through $helper-ammount {
+        [#{$prop-name}#{$i}]{
+            #{$prop}: $helper-step * $i * 1rem;
+        }
+        @each $side-prop, $side in $map-props-sides {
+            [#{$prop-name}#{$side-prop}#{$i}]{
+                #{$prop}-#{$side}: $helper-step * $i * 1rem;
+            }   
+        }
+    }    
+}
