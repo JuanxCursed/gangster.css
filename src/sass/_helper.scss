@@ -1,5 +1,6 @@
 $helper-step: 1;
 $helper-ammount: 5;
+$helper-unity: 'rem';
 
 $padding-prop-name: "p-";
 $margin-prop-name: "m-";
@@ -26,11 +27,11 @@ $map-props-sides:(
 @each $prop-name, $prop in $map-props {
     @for $i from 0 through $helper-ammount {
         [#{$prop-name}#{$i}]{
-            #{$prop}: $helper-step * $i * 1rem;
+            #{$prop}: $i * $helper-step#{$helper-unity};
         }
         @each $side-prop, $side in $map-props-sides {
             [#{$prop-name}#{$side-prop}#{$i}]{
-                #{$prop}-#{$side}: $helper-step * $i * 1rem;
+                #{$prop}-#{$side}: $i * $helper-step#{$helper-unity};
             }   
         }
     }    
