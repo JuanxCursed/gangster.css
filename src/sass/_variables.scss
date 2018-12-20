@@ -1,13 +1,13 @@
-/* 
-    Table of contents
-
-    - Pros names
-    - Grid
-    - Fonts
-*/
+// 
+//  Table of contents
+//
+//  - Props names
+//  - Grid
+//  - Fonts
+//
 
 // ==================================================
-// Grid
+// Props names
 // ==================================================
 $grid-prop-name: 'grid';
 $width-prop-name: 'w-';
@@ -23,14 +23,14 @@ $down-prop-name: 'down';
 // ==================================================
 // Grid
 // ==================================================
-$grid-column-count: 6;
-$grid-column-gap: 15px;
-$grid-column-padding: 15px;
+$grid-column-count: 12 !default;
+$grid-column-gap: 0.75rem !default;
+$grid-column-padding: 0.75rem !default;
 
-$grid-bp-sm: 600;
-$grid-bp-md: 768;
-$grid-bp-lg: 992;
-$grid-bp-xl: 1200;
+$grid-bp-sm: 600 !default;
+$grid-bp-md: 768 !default;
+$grid-bp-lg: 992 !default;
+$grid-bp-xl: 1200 !default;
 
 $map-grid-bp:(
     '':0,
@@ -40,6 +40,10 @@ $map-grid-bp:(
     #{$grid-bp-xl-prop-name}: $grid-bp-xl
 );
 
+$boxed-prop-name: 'boxed';
+$boxed-limit: 1280;
+$boxed-size: 100;
+$boxed-step: 5;
 // ==================================================
 // Fonts
 // ==================================================
