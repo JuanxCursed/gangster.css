@@ -7,7 +7,20 @@ $red: #b94040;
 $colors: ( 'blue':$blue, 'red':$red);
 // generate function to manipulate color shade
 @function get-shade($color, $shade) {
-    @return $color;
+    $shade-porcentage: $shade/$shade-diff*1%;
+    @if ($shade < 500) {
+        $shade-color: lighten($color,$shade-porcentage);
+        @return $shade-color;
+    }
+    @if ($shade == 500) {
+        $shade-color: $color;
+        @return $shade-color;
+    }
+    @if ($shade > 500) {
+        $shade-color: darken($color,$shade-porcentage);
+        @return $shade-color;   
+    }
+    @return $shade-color;
 }
 
 // generate function to generate multiple shades of the same color
@@ -16,10 +29,9 @@ $colors: ( 'blue':$blue, 'red':$red);
     $color in $colors {
         $pallete: ();
         @for $shade from 1 through $shade-ammount {
-            $pallete: map-merge( $pallete, ('#{$shade*$shade-steps}': get-shade($color, $shade*$shade-steps)));
+            $pallete: map-merge($pallete, ('#{$shade*$shade-steps}': get-shade($color, $shade*$shade-steps)));
         }
         @each $shade, $color in $pallete {
-            @warn "test porra";
             @if $shade == 500 {
                 [#{$color-name}] {
                     background-color: $color;

@@ -1,4 +1,4 @@
-/* 
+/*
     Table of contents
 
     - Variables
@@ -653,5 +653,77 @@ div[grid], main[grid], header[grid], footer[grid] {
   [h-xl-down] {
     display: none !important;
   }
+}
+
+[blue][shade-100] {
+  background-color: #4747b7;
+}
+
+[blue][shade-200] {
+  background-color: #6c6cc5;
+}
+
+[blue][shade-300] {
+  background-color: #9090d4;
+}
+
+[blue][shade-400] {
+  background-color: #b5b5e2;
+}
+
+[blue][shade-500] {
+  background-color: #393992;
+}
+
+[blue][shade-600] {
+  background-color: black;
+}
+
+[blue][shade-700] {
+  background-color: black;
+}
+
+[blue][shade-800] {
+  background-color: black;
+}
+
+[blue][shade-900] {
+  background-color: black;
+}
+
+[red][shade-100] {
+  background-color: #c96363;
+}
+
+[red][shade-200] {
+  background-color: #d68989;
+}
+
+[red][shade-300] {
+  background-color: #e3afaf;
+}
+
+[red][shade-400] {
+  background-color: #f0d5d5;
+}
+
+[red][shade-500] {
+  background-color: #b94040;
+}
+
+[red][shade-600] {
+  background-color: black;
+}
+
+[red][shade-700] {
+  background-color: black;
+}
+
+[red][shade-800] {
+  background-color: black;
+}
+
+[red][shade-900] {
+  background-color: black;
 }
 /*# sourceMappingURL=main.css.map */
