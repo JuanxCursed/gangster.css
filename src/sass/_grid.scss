@@ -42,30 +42,62 @@ footer {
   @include grid-builder($bp, $breakpoint, $grid-column-count);
 }
 
-//
 
 @each $bp, $breakpoint in $map-grid-bp {
     $index: index(($map-grid-bp), ($bp $breakpoint)) - 1;
   @if ($bp == "") {
     $bp: $grid-bp-xs-prop-name;
-
     [boxed] {
         margin: 0 auto;
         max-width: $boxed-limit * 1px;
         width: $boxed-size - $boxed-step * $index * 1%;
     }
-  }
-  @include media-builder($breakpoint) {
     [#{$hidden-prop-name}#{$bp}#{$up-prop-name}] {
-      display: none !important;
+        display: none !important;
     }
-  }
-  @include media-builder($breakpoint - 1, "max") {
     [#{$hidden-prop-name}#{$bp}#{$down-prop-name}] {
-      display: none !important;
-    }    
-    [boxed] {
-        width: $boxed-size - $boxed-step * $index * 1%;
+        display: none !important;
     }
   }
+  @else{
+    @include media-builder($breakpoint) {
+        [#{$hidden-prop-name}#{$bp}#{$up-prop-name}] {
+          display: none !important;
+        }
+      }
+      @include media-builder($breakpoint - 1, "max") {
+        [#{$hidden-prop-name}#{$bp}#{$down-prop-name}] {
+          display: none !important;
+        }    
+        [boxed] {
+            width: $boxed-size - $boxed-step * $index * 1%;
+        }
+      }
+  }
+  
+}
+
+[column] {
+  flex-direction: column;
+}
+[row] {
+  flex-direction: row;
+}
+[content-start] {
+  justify-content: flex-start;
+}
+[content-end] {
+  justify-content: flex-end;
+}
+[content-center] {
+  justify-content: center;
+}
+[content-between] {
+  justify-content: space-between;
+}
+[content-around] {
+  justify-content: space-around;
+}
+[content-evenly] {
+  justify-content: space-evenly;
 }
