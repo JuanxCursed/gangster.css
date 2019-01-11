@@ -1,38 +1,83 @@
-$helper-step: 1;
-$helper-ammount: 5;
-$helper-unity: 'rem';
+@function power-number($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  } @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
 
-$padding-prop-name: "p-";
-$margin-prop-name: "m-";
-$border-prop-name: "b-";
+@function color-luminance($color) {
+  $color-rgb: ('red': red($color), 'green': green($color), 'blue': blue($color));
+  @each $name, $value in $color-rgb {
+    $adjusted: 0;
+    $value: $value / 255;
+    @if $value < .03928 {
+      $value: $value / 12.92;
+    } @else {
+      $value: ($value + .055) / 1.055;
+      $value: power-number($value, 2);
+    }
+    $color-rgb: map-merge($color-rgb, ($name: $value));
+  }
+  @return (map-get($color-rgb, 'red') * .2126) + (map-get($color-rgb, 'green') * .7152) + (map-get($color-rgb, 'blue') * .0722);
+}
 
-$side-top-prop-name: "t-";
-$side-right-prop-name: "r-";
-$side-bottom-prop-name: "b-";
-$side-left-prop-name: "l-";
+@function find-color-invert($color) {
+  @if (color-luminance($color) > .55) {
+    @return rgba(#000, .7);
+  } @else {
+    @return #fff;
+  }
+}
 
-$map-props: (
-    #{$padding-prop-name}: "padding", 
-    #{$margin-prop-name}: "margin",
-    #{$border-prop-name}: "border",
-);
+@mixin clearfix {
+  display: inline-block;
+  &:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+  * html & { height: 1px; }
+}
 
-$map-props-sides:(
-    #{$side-top-prop-name}: 'top',
-    #{$side-right-prop-name}: 'right',
-    #{$side-bottom-prop-name}: 'bottom',
-    #{$side-left-prop-name}: 'left'
-);
+@mixin push-auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+@mixin hardware($backface: true, $perspective: 1000) {
+  @if $backface {
+    backface-visibility: hidden;
+  }
+  perspective: $perspective;
+}
+
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 
 @each $prop-name, $prop in $map-props {
-    @for $i from 0 through $helper-ammount {
-        [#{$prop-name}#{$i}]{
-            #{$prop}: $i * $helper-step#{$helper-unity};
-        }
-        @each $side-prop, $side in $map-props-sides {
-            [#{$prop-name}#{$side-prop}#{$i}]{
-                #{$prop}-#{$side}: $i * $helper-step#{$helper-unity};
-            }   
-        }
-    }    
+  @for $i from 0 through $helper-amount {
+    [#{$prop-name}#{$i}] {
+      #{$prop}: $i * $helper-step#{$helper-unity};
+    }
+    @each $side-prop, $side in $map-props-sides {
+      [#{$prop-name}#{$side-prop}#{$i}] {
+        #{$prop}-#{$side}: $i * $helper-step#{$helper-unity};
+      }
+    }
+  }
 }

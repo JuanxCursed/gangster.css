@@ -3,47 +3,77 @@
 //
 //  - Props names
 //  - Grid
-//  - Fonts
+//  - Helpers
+//  - Helpers
+//  - Helpers
+//  - Helpers
+//  - Helpers
+//  - Helpers
 //
 
 // ==================================================
 // Props names
 // ==================================================
-$grid-prop-name: 'grid';
-$width-prop-name: 'w-';
-$offset-prop-name: 'o-';
-$hidden-prop-name: 'h-';
-$grid-bp-xs-prop-name: 'xs-';
-$grid-bp-sm-prop-name: 'sm-';
-$grid-bp-md-prop-name: 'md-';
-$grid-bp-lg-prop-name: 'lg-';
-$grid-bp-xl-prop-name: 'xl-';
-$up-prop-name: 'up';
-$down-prop-name: 'down';
+$grid-prop-name: 'grid' !default;
+$width-prop-name: 'w-' !default;
+$offset-prop-name: 'o-' !default;
+$hidden-prop-name: 'h-' !default;
+$grid-bp-xs-prop-name: 'xs-' !default;
+$grid-bp-sm-prop-name: 'sm-' !default;
+$grid-bp-md-prop-name: 'md-' !default;
+$grid-bp-lg-prop-name: 'lg-' !default;
+$grid-bp-xl-prop-name: 'xl-' !default;
+$up-prop-name: 'up' !default;
+$down-prop-name: 'down' !default;
+$padding-prop-name: 'p-' !default;
+$margin-prop-name: 'm-' !default;
+$border-prop-name: 'b-' !default;
+$side-top-prop-name: 't-' !default;
+$side-right-prop-name: 'r-' !default;
+$side-bottom-prop-name: 'b-' !default;
+$side-left-prop-name: 'l-' !default;
+
 // ==================================================
 // Grid
 // ==================================================
-$grid-column-count: 12 !default;
-$grid-column-gap: 0.75rem !default;
-$grid-column-padding: 0.75rem !default;
+$grid-column-count: 6 !default;
+$grid-column-gap: .75rem !default;
+$grid-column-padding: .75rem !default;
 
 $grid-bp-sm: 600 !default;
 $grid-bp-md: 768 !default;
 $grid-bp-lg: 992 !default;
 $grid-bp-xl: 1200 !default;
 
-$map-grid-bp:(
-    '':0,
-    #{$grid-bp-sm-prop-name}: $grid-bp-sm,
-    #{$grid-bp-md-prop-name}: $grid-bp-md,
-    #{$grid-bp-lg-prop-name}: $grid-bp-lg,
-    #{$grid-bp-xl-prop-name}: $grid-bp-xl
+$map-grid-bp: (
+  '': 0,
+  $grid-bp-sm-prop-name: $grid-bp-sm,
+  $grid-bp-md-prop-name: $grid-bp-md,
+  $grid-bp-lg-prop-name: $grid-bp-lg,
+  $grid-bp-xl-prop-name: $grid-bp-xl
 );
 
-$boxed-prop-name: 'boxed';
-$boxed-limit: 1280;
-$boxed-size: 100;
-$boxed-step: 5;
+$boxed-prop-name: 'boxed' !default;
+$boxed-limit: 1280 !default;
+$boxed-size: 100 !default;
+$boxed-step: 5 !default;
+
 // ==================================================
-// Fonts
+// Helpers
 // ==================================================
+$helper-step: 1 !default;
+$helper-amount: 5 !default;
+$helper-unity: rem !default;
+
+$map-props: (
+  #{$padding-prop-name}: 'padding',
+  #{$margin-prop-name}: 'margin',
+  #{$border-prop-name}: 'border',
+);
+
+$map-props-sides: (
+  #{$side-top-prop-name}: 'top',
+  #{$side-right-prop-name}: 'right',
+  #{$side-bottom-prop-name}: 'bottom',
+  #{$side-left-prop-name}: 'left'
+);
