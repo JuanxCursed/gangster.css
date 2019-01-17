@@ -34,6 +34,24 @@ $side-bottom-prop-name: 'b-' !default;
 $side-left-prop-name: 'l-' !default;
 
 // ==================================================
+// Default Sizes
+// ==================================================
+$radius: 3rem;
+$padding: 3rem;
+
+
+// ==================================================
+// Colors Default
+// ==================================================
+$primary: color('blue', 'base');
+$success: color('green', 'base');
+$danger: color('red', 'base');
+$warning: color('orange', 'base');
+$alert: color('yellow', 'base');
+$secundary: color('purple', 'base');
+
+
+// ==================================================
 // Grid
 // ==================================================
 $grid-column-count: 6 !default;
@@ -77,3 +95,13 @@ $map-props-sides: (
   #{$side-bottom-prop-name}: 'bottom',
   #{$side-left-prop-name}: 'left'
 );
+
+
+// ==================================================
+// Header
+// ==================================================
+
+
+// ==================================================
+// Nav
+// ==================================================

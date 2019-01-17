@@ -1,0 +1,19 @@
+nav {
+  ul {
+    display: flex;
+    list-style: none;
+    li {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      a {
+        @extend [p-1];
+        &:hover {
+
+        }
+      }
+
+    }
+  }
+}

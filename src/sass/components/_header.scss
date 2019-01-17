@@ -1,0 +1,10 @@
+header {
+  background: $secundary;
+  @extend [content-around];
+  nav {
+    @extend [content-center];
+  }
+  img{
+    max-height: 50px;
+  }
+}

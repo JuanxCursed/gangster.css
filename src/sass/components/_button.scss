@@ -1,0 +1,78 @@
+button, [button] {
+  display: inline-block;
+  position: relative;
+  border: none;
+  color: color('shades', 'white');
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all .5s ease-out;
+  background: $primary;
+  @extend [p-1];
+
+  &:hover {
+    background: darken($primary, 15%);
+    color: lighten($primary, 30%);
+
+    &::before, &::after {
+      width: 100%;
+    }
+
+    span {
+      &::before, &::after {
+        height: 100%;
+      }
+    }
+  }
+
+  &::after {
+    right: 0;
+    bottom: 0;
+    transition-duration: 0.4s;
+  }
+
+  &::before {
+    left: 0;
+    top: 0;
+    transition-duration: 0.4s;
+  }
+
+  &::before, &::after {
+    content: "";
+    width: 0;
+    height: 1px;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    background: color('shades', 'white');
+  }
+
+  span {
+    display: block;
+
+    &:hover {
+      &::before, &::after {
+        height: 100%;
+      }
+    }
+
+    &::after {
+      right: 0;
+      bottom: 0;
+      transition-duration: 0.2s;
+    }
+
+    &::before {
+      left: 0;
+      top: 0;
+      transition-duration: 0.2s;
+    }
+
+    &::before, &::after {
+      content: "";
+      width: 1px;
+      height: 0;
+      position: absolute;
+      transition: all 0.2s ease-out;
+      background: color('shades', 'white');
+    }
+  }
+}
