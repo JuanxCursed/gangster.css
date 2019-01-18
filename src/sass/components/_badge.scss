@@ -1,0 +1,34 @@
+[badge] {
+  position: relative;
+
+  &:hover, &:active, &:focus {
+    &:after {
+      -webkit-animation: ease bubbleover .4s;
+      animation: ease bubbleover .4s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      top: -1.25em; /* If pseudo animation not supported [see https://css-tricks.com/transitions-and-animations-on-css-generated-content/], simple hover fallback happens*/
+      z-index: 1;
+    }
+  }
+
+  &:after {
+    opacity: 0;
+    content: attr(badge);
+    position: absolute;
+    top: 0;
+    right: 0.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    padding: 0 .46em;
+    text-align: center;
+    text-shadow: 0 0.063em 0 rgba(0, 0, 0, .2);
+    background-color: #eee;
+    color: #364652;
+    box-shadow: 0 0.063em 0.063em rgba(0, 0, 0, .2);
+    border-radius: 4em;
+    z-index: -1;
+    -webkit-transform: translateZ(0); /*Prevents text flicker*/
+    will-change: transform;
+  }
+}

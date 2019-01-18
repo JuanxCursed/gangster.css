@@ -31,9 +31,16 @@ $material-icons-font-path:'../../node_modules/material-icons/iconfont/';
 @import './normalize';
 @import './helper';
 @import './grid';
+@import './animations';
+
+@import './components/input';
+@import './components/select';
 @import './components/button';
 @import './components/nav';
 @import './components/media';
 @import './components/header';
 @import './components/footer';
+@import './components/badge';
+
+
 
