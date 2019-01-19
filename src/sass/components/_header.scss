@@ -1,6 +1,8 @@
 header {
-  background: $secundary;
-  @extend [content-around];
+  height: 70px;
+  background: linear-gradient(175deg, $primary, darken($primary, 20%));
+  box-shadow: 0 0 .3rem .1rem color('blue-grey','darken-2');
+  @extend [content-evenly];
   nav {
     @extend [content-center];
   }

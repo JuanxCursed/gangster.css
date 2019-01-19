@@ -43,18 +43,47 @@ $padding: 3rem;
 // ==================================================
 // Colors Default
 // ==================================================
-$primary: color('blue', 'base');
 $success: color('green', 'base');
 $danger: color('red', 'base');
 $warning: color('orange', 'base');
 $alert: color('yellow', 'base');
+$primary: color('blue', 'base');
 $secundary: color('purple', 'base');
+$disabled: color('grey', 'lighten-1');
+[success]{
+  background: $success;
+  color: darken($success, 35%);
+}
+[danger]{
+  background: $danger;
+  color: darken($danger, 35%);
+}
+[warning]{
+  background: $warning;
+  color: darken($warning, 35%);
+}
+[alert]{
+  background: $alert;
+  color: darken($alert, 35%);
+}
+[primary]{
+  background: $primary;
+  color: darken($primary, 35%);
+}
+[secundary]{
+  background: $secundary;
+  color: darken($secundary, 35%);
+}
+[disabled]{
+  background: $disabled;
+  color: darken($disabled, 35%);
+}
 
 
 // ==================================================
 // Grid
 // ==================================================
-$grid-column-count: 6 !default;
+$grid-column-count: 12 !default;
 $grid-column-gap: .75rem !default;
 $grid-column-padding: .75rem !default;
 
@@ -96,7 +125,7 @@ $map-props-sides: (
   #{$side-left-prop-name}: 'left'
 );
 
-
+$default-border-size: 1;
 // ==================================================
 // Header
 // ==================================================

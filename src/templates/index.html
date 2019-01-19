@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="../../dist/css/gangster.css">
 </head>
 <body>
-<header grid>
-    <nav>
+<header grid items-center>
+    <nav w-3 self-center>
         <ul>
             <li><a href="#!" button><span>Test Link</span></a></li>
             <li><a href="#!" button><span>Test Link</span></a></li>
@@ -14,61 +14,57 @@
             <li><a href="#!" button><span>Test Link</span></a></li>
         </ul>
     </nav>
-    <h1>
+    <h1 w-6 self-center>
         <img src="../img/gangster.css.svg" alt="">
     </h1>
-    <div>
-        <form action="">
-            <input type="search">
-            <button type="submit">
-                <span>
-                <i icon>search</i>
-                </span>
-            </button>
-        </form>
+    <div w-3 self-center text-right>
         <a href="#!">
-            <i icon>account</i>
+            <i icon>person</i>
         </a>
     </div>
 </header>
-<aside>
-    <nav>
-        <ul>
-            <li><a href="#!" button>Test Link</a></li>
-            <li><a href="#!" button>Test Link</a></li>
-            <li><a href="#!" button>Test Link</a></li>
-            <li><a href="#!" button>Test Link</a></li>
-        </ul>
-    </nav>
-</aside>
 <main grid>
-    <div w-12>
-        <p><span badge="100">teste de bade</span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam esse temporibus dolorem, optio quaerat
-            excepturi ab nisi quisquam quis est iste. Quam sunt distinctio magni et accusantium. Eum, facilis iste!</p>
-    </div>
-    <div w-1 o-2 h-sm-up>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam esse temporibus dolorem, optio quaerat
-            excepturi ab nisi quisquam quis est iste. Quam sunt distinctio magni et accusantium. Eum, facilis iste!</p>
-    </div>
-    <div w-1>
-        <span badge="teste">teste de bade</span>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam esse temporibus dolorem, optio quaerat
-            excepturi ab nisi quisquam quis est iste. Quam sunt distinctio magni et accusantium. Eum, facilis iste!</p>
-    </div>
-    <div w-1>
-        <button>Test Button</button>
-    </div>
+    <aside w-2>
+        <nav>
+            <ul>
+                <li><a href="#!" button><span>Link</span></a></li>
+                <li><a href="#!" button><span>Link</span></a></li>
+                <li><a href="#!" button><span>Link</span></a></li>
+                <li><a href="#!" button><span>Link</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div w-10 p-1>
+        <form action="">
+            <div>
+                <div input>
+                    <input type="text" id="text" required>
+                    <label for="text">Text</label>
+                </div>
+            </div>
+            <div>
+                <div checkbox>
+                    <input type="checkbox" id="checkbox-1">
+                    <label for="checkbox-1">Campo de checkbox</label>
+                </div>
+                <div checkbox>
+                    <input type="checkbox" id="checkbox-2">
+                    <label for="checkbox-2">Campo de checkbox</label>
+                </div>
+            </div>
+            <div>
+                <div radio>
+                    <input type="radio" id="radio-1" name="radio[]">
+                    <label for="radio-1">Campo de radio</label>
+                </div>
+                <div radio>
+                    <input type="radio" id="radio-2" name="radio[]">
+                    <label for="radio-2">Campo de radio</label>
+                </div>
+            </div>
 
+        </form>
+    </div>
 </main>
 </body>
-<footer>
-    <nav>
-        <ul>
-            <li><a href="#!" button>Test Link</a></li>
-            <li><a href="#!" button>Test Link</a></li>
-            <li><a href="#!" button>Test Link</a></li>
-            <li><a href="#!" button>Test Link</a></li>
-        </ul>
-    </nav>
-</footer>
 </html>

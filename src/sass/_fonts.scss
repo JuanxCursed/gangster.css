@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Montserrat:300|Sedgwick+Ave');
+
+$material-icons-font-path: '../../node_modules/material-icons/iconfont/';
+@import '../../node_modules/material-icons/iconfont/variables';
+@import '../../node_modules/material-icons/iconfont/mixins';
+
+@font-face {
+  font-family: $material-icons-font-family;
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$material-icons-font-file}.eot');
+  src: local($material-icons-font-family), local($material-icons-font-name),
+  url('#{$material-icons-font-file}.woff2') format('woff2'),
+  url('#{$material-icons-font-file}.woff') format('woff'),
+  url('#{$material-icons-font-file}.ttf') format('truetype');
+}
+
+[icon] {
+  @include material-icons();
+}
+
+$sedgwick: 'Sedgwick Ave', cursive;
+$montserrat: 'Montserrat', sans-serif;
+$audiowide: 'Audiowide', cursive;
+
+p, span, center, div, input, textarea, article, select, section, figcaption, caption, button, a, ul, ol, li,
+label, select, main, header, footer {
+  font-family: $montserrat;
+}
+
+h1, h3, h4, h6 {
+  font-family: $sedgwick;
+}
+
+h2, h5 {
+  font-family: $audiowide;
+}
+
+[text-left]{ text-align: left;}
+[text-right]{ text-align: right;}

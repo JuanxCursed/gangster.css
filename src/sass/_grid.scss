@@ -1,6 +1,13 @@
 // Create container
+html, body {
+  height: 100vh;
+  min-height: 100%;
+}
+
 div,
 main,
+aside,
+article,
 header,
 footer {
   &[#{$grid-prop-name}] {
@@ -8,34 +15,23 @@ footer {
   }
 }
 
-// Defines if need breakpoint query or not
-@mixin media-builder($breakpoint, $direction: "min") {
-  @if ($breakpoint == 0) {
-    @content;
-  } @else {
-    @media screen and (#{$direction}-width: $breakpoint * 1px) {
-      @content;
+html, body, div, main, article, code, textarea {
+  @include scrollbars(.5em, $disabled);
+}
+
+@each $prop-name, $prop in $map-props {
+  @for $i from 0 through $helper-amount {
+    [#{$prop-name}#{$i}] {
+      #{$prop}: $i * $helper-step#{$helper-unity};
+    }
+    @each $side-prop, $side in $map-props-sides {
+      [#{$prop-name}#{$side-prop}#{$i}] {
+        #{$prop}-#{$side}: $i * $helper-step#{$helper-unity};
+      }
     }
   }
 }
 
-// Create props with breakpoint and column size
-@mixin grid-builder($bp, $breakpoint, $grid-column-count) {
-  @include media-builder($breakpoint) {
-    // column width
-    @for $i from 1 through $grid-column-count {
-      [#{$bp}#{$width-prop-name}#{$i}] {
-        flex-basis: (100 / ($grid-column-count / $i)) * 1%;
-      }
-    }
-    // column offset
-    @for $i from 1 through $grid-column-count {
-      [#{$bp}#{$offset-prop-name}#{$i}] {
-        margin-left: (100 / ($grid-column-count / $i)) * 1%;
-      }
-    }
-  }
-}
 
 // Map array to gerenate all style props
 @each $bp, $breakpoint in $map-grid-bp {
@@ -44,60 +40,147 @@ footer {
 
 
 @each $bp, $breakpoint in $map-grid-bp {
-    $index: index(($map-grid-bp), ($bp $breakpoint)) - 1;
+  $index: index(($map-grid-bp), ($bp $breakpoint)) - 1;
   @if ($bp == "") {
     $bp: $grid-bp-xs-prop-name;
     [boxed] {
-        margin: 0 auto;
-        max-width: $boxed-limit * 1px;
-        width: $boxed-size - $boxed-step * $index * 1%;
+      margin: 0 auto;
+      max-width: $boxed-limit * 1px;
+      width: $boxed-size - $boxed-step * $index * 1%;
     }
     [#{$hidden-prop-name}#{$bp}#{$up-prop-name}] {
-        display: none !important;
+      display: none !important;
     }
     [#{$hidden-prop-name}#{$bp}#{$down-prop-name}] {
+      display: none !important;
+    }
+  } @else {
+    @include media-builder($breakpoint) {
+      [#{$hidden-prop-name}#{$bp}#{$up-prop-name}] {
         display: none !important;
+      }
+    }
+    @include media-builder($breakpoint - 1, "max") {
+      [#{$hidden-prop-name}#{$bp}#{$down-prop-name}] {
+        display: none !important;
+      }
+      [boxed] {
+        width: $boxed-size - $boxed-step * $index * 1%;
+      }
     }
   }
-  @else{
-    @include media-builder($breakpoint) {
-        [#{$hidden-prop-name}#{$bp}#{$up-prop-name}] {
-          display: none !important;
-        }
-      }
-      @include media-builder($breakpoint - 1, "max") {
-        [#{$hidden-prop-name}#{$bp}#{$down-prop-name}] {
-          display: none !important;
-        }    
-        [boxed] {
-            width: $boxed-size - $boxed-step * $index * 1%;
-        }
-      }
-  }
-  
+
 }
 
 [column] {
   flex-direction: column;
 }
+
 [row] {
   flex-direction: row;
+  flex-wrap: wrap;
 }
+
+[fluid] {
+  margin: 0;
+  max-width: 100%;
+}
+
 [content-start] {
   justify-content: flex-start;
 }
+
 [content-end] {
   justify-content: flex-end;
 }
+
 [content-center] {
   justify-content: center;
 }
+
 [content-between] {
   justify-content: space-between;
 }
+
 [content-around] {
   justify-content: space-around;
 }
+
 [content-evenly] {
   justify-content: space-evenly;
 }
+
+[items-center] {
+  align-content: center;
+}
+
+[items-start] {
+  align-content: flex-start;
+}
+
+[items-end] {
+  align-content: flex-end;
+}
+
+[items-baseline] {
+  align-content: baseline;
+}
+
+[items-stretch] {
+  align-content: stretch;
+}
+
+[align-center] {
+  align-content: center;
+}
+
+[align-start] {
+  align-content: flex-start;
+}
+
+[align-end] {
+  align-content: flex-end;
+}
+
+[align-baseline] {
+  align-content: baseline;
+}
+
+[align-stretch] {
+  align-content: stretch;
+}
+
+[self-center] {
+  align-self: center;
+}
+
+[self-start] {
+  align-self: flex-start;
+}
+
+[self-end] {
+  align-self: flex-end;
+}
+
+[self-strech] {
+  align-self: stretch;
+}
+
+[self-baseline] {
+  align-self: baseline;
+}
+
+[nowrap] {
+  flex-wrap: nowrap;
+}
+
+[wrap] {
+  flex-wrap: wrap;
+}
+
+[wrap-reverse] {
+  flex-wrap: wrap-reverse;
+}
+
+
+

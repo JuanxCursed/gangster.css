@@ -39,10 +39,10 @@ button, [button] {
   &::before, &::after {
     content: "";
     width: 0;
-    height: 1px;
+    height: $default-border-size * 1px;
     position: absolute;
     transition: all 0.2s ease-out;
-    background: color('shades', 'white');
+    background: darken($primary, 25%);
   }
 
   span {
@@ -68,11 +68,11 @@ button, [button] {
 
     &::before, &::after {
       content: "";
-      width: 1px;
+      width: $default-border-size * 1px;
       height: 0;
       position: absolute;
       transition: all 0.2s ease-out;
-      background: color('shades', 'white');
+      background: darken($primary, 25%);
     }
   }
 }

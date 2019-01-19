@@ -1,0 +1,19 @@
+aside {
+  flex-direction: column;
+  background: #555;
+  height: calc(100vh - 70px);
+  ul {
+    display: block;
+    li {
+      display: flex;
+      flex: 1;
+      margin-right: 0!important;
+      text-align: center;
+      @extend [m-b-1];
+      button, a, [button] {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  }
+}

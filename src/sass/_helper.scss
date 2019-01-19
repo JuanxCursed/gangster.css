@@ -1,3 +1,32 @@
+// Defines if need breakpoint query or not
+@mixin media-builder($breakpoint, $direction: "min") {
+  @if ($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (#{$direction}-width: $breakpoint * 1px) {
+      @content;
+    }
+  }
+}
+
+// Create props with breakpoint and column size
+@mixin grid-builder($bp, $breakpoint, $grid-column-count) {
+  @include media-builder($breakpoint) {
+    // column width
+    @for $i from 1 through $grid-column-count {
+      [#{$bp}#{$width-prop-name}#{$i}] {
+        flex-basis: (100 / ($grid-column-count / $i)) * 1%;
+      }
+    }
+    // column offset
+    @for $i from 1 through $grid-column-count {
+      [#{$bp}#{$offset-prop-name}#{$i}] {
+        margin-left: (100 / ($grid-column-count / $i)) * 1%;
+      }
+    }
+  }
+}
+
 @function power-number($number, $exp) {
   $value: 1;
   @if $exp > 0 {
@@ -68,16 +97,173 @@
   white-space: nowrap;
 }
 
+/// @include stripes(to right, #8e44ad #2c3e50 #2980b9 #16a085 #27ae60);
+@mixin stripes($direction, $colors) {
+  $length: length($colors);
 
-@each $prop-name, $prop in $map-props {
-  @for $i from 0 through $helper-amount {
-    [#{$prop-name}#{$i}] {
-      #{$prop}: $i * $helper-step#{$helper-unity};
-    }
-    @each $side-prop, $side in $map-props-sides {
-      [#{$prop-name}#{$side-prop}#{$i}] {
-        #{$prop}-#{$side}: $i * $helper-step#{$helper-unity};
+  @if $length > 1 {
+    $stripes: ();
+
+    @for $i from 1 through $length {
+      $stripe: (100% / $length) * ($i - 1);
+
+      @if $i > 1 {
+        $stripes: append($stripes, nth($colors, $i - 1) $stripe, comma);
       }
+
+      $stripes: append($stripes, nth($colors, $i) $stripe, comma);
     }
+
+    background-image: linear-gradient($direction, $stripes);
+  } @else if $length == 1 {
+    background-color: $colors;
+  }
+}
+
+@function convert-angle($value, $unit) {
+  $convertable-units: deg grad turn rad;
+  $conversion-factors: 1 (10grad/9deg) (1turn/360deg) (3.1415926rad/180deg);
+  @if index($convertable-units, unit($value)) and index($convertable-units, $unit) {
+    @return $value
+             / nth($conversion-factors, index($convertable-units, unit($value)))
+             * nth($conversion-factors, index($convertable-units, $unit));
+  }
+
+  @warn "Cannot convert `#{unit($value)}` to `#{$unit}`.";
+}
+
+/// Test if `$value` is an angle
+/// @param {*} $value - Value to test
+/// @return {Bool}
+@function is-direction($value) {
+  $is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+  $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+  @return $is-direction or $is-angle;
+}
+
+/// Convert a direction to legacy syntax
+/// @param {Keyword | Angle} $value - Value to convert
+/// @require {function} is-direction
+/// @require {function} convert-angle
+@function legacy-direction($value) {
+  @if is-direction($value) == false {
+    @warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction";
+  }
+
+  $conversion-map: (
+          to top          : bottom,
+          to top right    : bottom left,
+          to right top    : left bottom,
+          to right        : left,
+          to bottom right : top left,
+          to right bottom : left top,
+          to bottom       : top,
+          to bottom left  : top right,
+          to left bottom  : right top,
+          to left         : right,
+          to left top     : right bottom,
+          to top left     : bottom right
+  );
+
+  @if map-has-key($conversion-map, $value) {
+    @return map-get($conversion-map, $value);
+  }
+
+  @return 90deg - convert-angle($value, 'deg');
+}
+/// @include linear-gradient(#31B7D7, #EDAC7D);
+/// Mixin printing a linear-gradient
+/// as well as a plain color fallback
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {String | List | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+  @if is-direction($direction) == false {
+    $color-stops: ($direction, $color-stops);
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity = $opacity-ie); //IE8
+}
+
+@mixin position($position, $args) {
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+  position: $position;
+}
+
+// Positioning helpers
+@mixin absolute($args: '') {
+  @include position(absolute, $args);
+}
+
+@mixin fixed($args: '') {
+  @include position(fixed, $args);
+}
+
+@mixin retina($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {
+    /* Serving 2x image on Retina display */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
   }
 }
