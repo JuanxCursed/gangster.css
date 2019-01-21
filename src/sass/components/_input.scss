@@ -19,12 +19,13 @@ form {
   [input] {
     display: flex;
     position: relative;
+
     label {
       position: absolute;
       top: 50%;
       left: 0;
       transform: translate(15px, -50%);
-      transition: all .5s cubic-bezier(.24,1.24,.8,.2);
+      transition: all .5s cubic-bezier(.28, .9, .35, .92);
       @extend [m-b-1];
     }
 
@@ -62,6 +63,7 @@ form {
         color: $disabled;
         cursor: not-allowed;
       }
+
       &:focus + label{
         top: -7%;
         background: $primary;
@@ -69,11 +71,12 @@ form {
         padding: .1rem .7rem;
         border-radius: .4rem;
       }
+
       &:focus {
         padding-right: 1.8rem;
 
         &:required::after {
-          content: '*Obrigatório';
+          content: '* Obrigatório';
           display: block;
         }
 

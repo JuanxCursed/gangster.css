@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="../../dist/css/gangster.css">
 </head>
 <body>
-<header grid items-center>
-    <nav w-3 self-center>
+<header row>
+    <nav column>
         <ul>
             <li><a href="#!" button><span>Test Link</span></a></li>
             <li><a href="#!" button><span>Test Link</span></a></li>
@@ -14,10 +14,10 @@
             <li><a href="#!" button><span>Test Link</span></a></li>
         </ul>
     </nav>
-    <h1 w-6 self-center>
+    <h1 column>
         <img src="../img/gangster.css.svg" alt="">
     </h1>
-    <div w-3 self-center text-right>
+    <div column text-right>
         <a href="#!">
             <i icon>person</i>
         </a>
@@ -36,10 +36,16 @@
     </aside>
     <div w-10 p-1>
         <form action="">
-            <div>
+            <div w-6>
                 <div input>
                     <input type="text" id="text" required>
-                    <label for="text">Text</label>
+                    <label for="text">Nome</label>
+                </div>
+            </div>
+            <div w-6>
+                <div input>
+                    <input type="email" id="text" required>
+                    <label for="text">E-mail</label>
                 </div>
             </div>
             <div>
