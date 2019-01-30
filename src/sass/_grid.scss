@@ -22,11 +22,11 @@ html, body, div, main, article, code, textarea {
 @each $prop-name, $prop in $map-props {
   @for $i from 0 through $helper-amount {
     [#{$prop-name}#{$i}] {
-      #{$prop}: $i * $helper-step#{$helper-unity};
+      #{$prop}: $i * $helper-step * 1rem;
     }
     @each $side-prop, $side in $map-props-sides {
       [#{$prop-name}#{$side-prop}#{$i}] {
-        #{$prop}-#{$side}: ($i * $helper-step#{$helper-unity});
+        #{$prop}-#{$side}: $i * $helper-step * 1rem;
       }
     }
   }
