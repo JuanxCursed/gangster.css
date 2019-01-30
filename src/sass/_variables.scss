@@ -108,9 +108,9 @@ $boxed-step: 5 !default;
 // ==================================================
 // Helpers
 // ==================================================
-$helper-step: .5 !default;
-$helper-amount: 5 !default;
-$helper-unity: rem !default;
+$helper-step:.3!default;
+$helper-amount:5!default;
+$helper-unity:rem!default;
 
 $map-props: (
   #{$padding-prop-name}: 'padding',
