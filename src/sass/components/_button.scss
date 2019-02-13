@@ -7,7 +7,7 @@ button, [button] {
   cursor: pointer;
   transition: all .5s ease-out;
   background: $primary;
-  @extend [p-1];
+  @extend [p-3];
 
   &:hover {
     background: darken($primary, 15%);
