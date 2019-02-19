@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Montserrat:300|Sedgwick+Ave|Material+Icons');
+/*
 
 @font-face {
   font-family: $material-icons-font-family;
@@ -10,6 +11,7 @@
   url('#{$material-icons-font-file}.woff') format('woff'),
   url('#{$material-icons-font-file}.ttf') format('truetype');
 }
+*/
 
 [icon] {
   @include material-icons();
