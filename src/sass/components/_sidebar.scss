@@ -2,17 +2,25 @@ aside {
   flex-direction: column;
   background: #555;
   height: calc(100vh - 70px);
-  ul {
-    display: block;
-    li {
-      display: flex;
-      flex: 1;
-      margin-right: 0!important;
-      text-align: center;
-      @extend [m-b-1];
-      button, a, [button] {
+  display: flex;
+  > nav{
+    ul {
+      display: block;
+      width: 100%;
+      li {
+        h3, [h3], h4, [h4], h5, [h5] {
+          border-bottom: 3px dotted #cccccc;
+        }
+
+        display: flex;
         flex: 1;
-        justify-content: center;
+        margin-right: 0 !important;
+        text-align: center;
+
+        button, a, [button] {
+          flex: 1;
+          justify-content: center;
+        }
       }
     }
   }

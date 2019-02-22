@@ -1,20 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Montserrat:300|Sedgwick+Ave|Material+Icons');
-/*
-
-@font-face {
-  font-family: $material-icons-font-family;
-  font-style: normal;
-  font-weight: 400;
-  src: url('#{$material-icons-font-file}.eot');
-  src: local($material-icons-font-family), local($material-icons-font-name),
-  url('#{$material-icons-font-file}.woff2') format('woff2'),
-  url('#{$material-icons-font-file}.woff') format('woff'),
-  url('#{$material-icons-font-file}.ttf') format('truetype');
-}
-*/
 
 [icon] {
-  @include material-icons();
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  ///* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  ///* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  ///* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  ///* Support for IE. */
+  font-feature-settings: 'liga';
 }
 
 $sedgwick: 'Sedgwick Ave', cursive;
@@ -26,13 +34,22 @@ label, select, main, header, footer {
   font-family: $montserrat;
 }
 
-h1, h3, h4, h6 {
+h1, h3, h4, h6, [h1], [h3], [h4], [h6] {
   font-family: $sedgwick;
 }
 
-h2, h5 {
+h2, h5, [h2], [h5] {
   font-family: $audiowide;
 }
 
-[text-left]{ text-align: left;}
-[text-right]{ text-align: right;}
+[text-left] {
+  text-align: left;
+}
+
+[text-right] {
+  text-align: right;
+}
+
+[text-center] {
+  text-align: center;
+}

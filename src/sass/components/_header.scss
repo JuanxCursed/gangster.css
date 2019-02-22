@@ -1,12 +1,18 @@
-header {
-  height: 70px;
-  background: linear-gradient(175deg, $primary, darken($primary, 20%));
-  box-shadow: 0 0 .3rem .1rem color('blue-grey','darken-2');
-  @extend [content-evenly];
+body > header {
+  height: 80px;
+  background: $primary-background;
+  box-shadow: 0 0 .3rem .1rem color('blue-grey', 'darken-2');
+  margin: 0;
+
   nav {
-    @extend [content-center];
+
   }
-  img{
-    max-height: 50px;
+
+  img, svg {
+    max-height: 65px;
+  }
+
+  a {
+    color: #fff;
   }
 }

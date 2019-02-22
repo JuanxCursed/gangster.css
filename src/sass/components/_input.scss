@@ -26,7 +26,6 @@ form {
       left: 0;
       transform: translate(15px, -50%);
       transition: all .5s cubic-bezier(.28, .9, .35, .92);
-      @extend [m-b-1];
     }
 
     input, select, textarea {
@@ -64,7 +63,7 @@ form {
         cursor: not-allowed;
       }
 
-      &:focus + label{
+      &:focus + label {
         top: -7%;
         background: $primary;
         color: color('shades', 'white');

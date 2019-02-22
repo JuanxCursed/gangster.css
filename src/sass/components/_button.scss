@@ -1,3 +1,11 @@
+a {
+  &,
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
 button, [button] {
   display: inline-block;
   position: relative;
@@ -7,7 +15,7 @@ button, [button] {
   cursor: pointer;
   transition: all .5s ease-out;
   background: $primary;
-  @extend [p-3];
+  padding: 8px 12px;
 
   &:hover {
     background: darken($primary, 15%);

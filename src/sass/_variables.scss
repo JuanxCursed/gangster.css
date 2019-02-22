@@ -1,4 +1,4 @@
-// 
+//
 //  Table of contents
 //
 //  - Props names
@@ -25,9 +25,9 @@ $grid-bp-lg-prop-name: 'lg-' !default;
 $grid-bp-xl-prop-name: 'xl-' !default;
 $up-prop-name: 'up' !default;
 $down-prop-name: 'down' !default;
-$padding-prop-name: 'p-' !default;
-$margin-prop-name: 'm-' !default;
-$border-prop-name: 'b-' !default;
+$padding-prop-name: 'p' !default;
+$margin-prop-name: 'm' !default;
+$border-prop-name: 'b' !default;
 $side-top-prop-name: 't-' !default;
 $side-right-prop-name: 'r-' !default;
 $side-bottom-prop-name: 'b-' !default;
@@ -37,7 +37,6 @@ $side-left-prop-name: 'l-' !default;
 // Default Sizes
 // ==================================================
 $radius: 3rem;
-$padding: 3rem;
 
 
 // ==================================================
@@ -48,33 +47,41 @@ $danger: color('red', 'base');
 $warning: color('orange', 'base');
 $alert: color('yellow', 'base');
 $primary: color('blue', 'base');
+$primary-background: linear-gradient(175deg, $primary, darken($primary, 20%));
 $secundary: color('purple', 'base');
+$secundary-background: linear-gradient(175deg, $secundary, darken($secundary, 20%));
 $disabled: color('grey', 'lighten-1');
-[success]{
+[success] {
   background: $success;
   color: darken($success, 35%);
 }
-[danger]{
+
+[danger] {
   background: $danger;
   color: darken($danger, 35%);
 }
-[warning]{
+
+[warning] {
   background: $warning;
   color: darken($warning, 35%);
 }
-[alert]{
+
+[alert] {
   background: $alert;
   color: darken($alert, 35%);
 }
-[primary]{
+
+[primary] {
   background: $primary;
   color: darken($primary, 35%);
 }
-[secundary]{
+
+[secundary] {
   background: $secundary;
   color: darken($secundary, 35%);
 }
-[disabled]{
+
+[disabled] {
   background: $disabled;
   color: darken($disabled, 35%);
 }
@@ -84,44 +91,47 @@ $disabled: color('grey', 'lighten-1');
 // Grid
 // ==================================================
 $grid-column-count: 12 !default;
-$grid-column-gap: .75rem !default;
-$grid-column-padding: .75rem !default;
+$grid-column-gap: 10px !default;
+$grid-column-padding: 20 !default;
+//$gutter: 10px;
+//$spacing: 20;
+
 
 $grid-bp-sm: 600 !default;
-$grid-bp-md: 768 !default;
-$grid-bp-lg: 992 !default;
-$grid-bp-xl: 1200 !default;
+$grid-bp-md: 800 !default;
+$grid-bp-lg: 1190 !default;
+$grid-bp-xl: 1440 !default;
 
 $map-grid-bp: (
-  '': 0,
-  $grid-bp-sm-prop-name: $grid-bp-sm,
-  $grid-bp-md-prop-name: $grid-bp-md,
-  $grid-bp-lg-prop-name: $grid-bp-lg,
-  $grid-bp-xl-prop-name: $grid-bp-xl
+        '': 0,
+        $grid-bp-sm-prop-name: $grid-bp-sm,
+        $grid-bp-md-prop-name: $grid-bp-md,
+        $grid-bp-lg-prop-name: $grid-bp-lg,
+        $grid-bp-xl-prop-name: $grid-bp-xl
 );
 
 $boxed-prop-name: 'boxed' !default;
-$boxed-limit: 1280 !default;
-$boxed-size: 100 !default;
-$boxed-step: 5 !default;
+$boxed-limit: 1440 !default;
+$boxed-size: 240 !default;
+$boxed-step: 4 !default;
 
 // ==================================================
 // Helpers
 // ==================================================
-$helper-step:.3!default;
-$helper-amount:5!default;
+$helper-step: 5 !default;
+$helper-amount: 5 !default;
 
 $map-props: (
-  #{$padding-prop-name}: 'padding',
-  #{$margin-prop-name}: 'margin',
-  #{$border-prop-name}: 'border',
+        #{$padding-prop-name}: 'padding',
+        #{$margin-prop-name}: 'margin',
+        #{$border-prop-name}: 'border',
 );
 
 $map-props-sides: (
-  #{$side-top-prop-name}: 'top',
-  #{$side-right-prop-name}: 'right',
-  #{$side-bottom-prop-name}: 'bottom',
-  #{$side-left-prop-name}: 'left'
+        #{$side-top-prop-name}: 'top',
+        #{$side-right-prop-name}: 'right',
+        #{$side-bottom-prop-name}: 'bottom',
+        #{$side-left-prop-name}: 'left'
 );
 
 $default-border-size: 1;

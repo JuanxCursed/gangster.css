@@ -1,7 +1,5 @@
 [alert-box] {
   position: absolute;
-  @extend [p-3], [left], [right], [bottom];
-
   min-height: 100px;
   background: $primary;
   border: {
@@ -11,7 +9,8 @@
       color: darken($primary, 20%);
     }
   }
-  & [close]{
+
+  & [close] {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -19,6 +18,5 @@
     border-radius: 50%;
     width: 25px;
     height: 25px;
-    @extend [p-1];
   }
 }
