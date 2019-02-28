@@ -9,90 +9,6 @@ footer {
   }
 }
 
-[content-start] {
-  justify-content: flex-start;
-}
-
-[content-end] {
-  justify-content: flex-end;
-}
-
-[content-center] {
-  justify-content: center;
-}
-
-[content-between] {
-  justify-content: space-between;
-}
-
-[content-around] {
-  justify-content: space-around;
-}
-
-[content-evenly] {
-  justify-content: space-evenly;
-}
-
-[items-center] {
-  align-content: center;
-}
-
-[items-start] {
-  align-content: flex-start;
-}
-
-[items-end] {
-  align-content: flex-end;
-}
-
-[items-baseline] {
-  align-content: baseline;
-}
-
-[items-stretch] {
-  align-content: stretch;
-}
-
-[align-center] {
-  align-content: center;
-}
-
-[align-start] {
-  align-content: flex-start;
-}
-
-[align-end] {
-  align-content: flex-end;
-}
-
-[align-baseline] {
-  align-content: baseline;
-}
-
-[align-stretch] {
-  align-content: stretch;
-}
-
-[self-center] {
-  align-self: center;
-}
-
-[self-start] {
-  align-self: flex-start;
-}
-
-[self-end] {
-  align-self: flex-end;
-}
-
-[self-strech] {
-  align-self: stretch;
-}
-
-[self-baseline] {
-  align-self: baseline;
-}
-
 [nowrap] {
   flex-wrap: nowrap;
 }
@@ -185,8 +101,6 @@ footer {
 [direction-row] {
   flex-direction: row;
 }
-
-
 
 [hide] {
   display: none;
