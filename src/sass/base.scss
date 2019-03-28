@@ -1,9 +1,13 @@
 html, body {
   height: 100vh;
   min-height: 100%;
-  background: #fff;
 }
 
 html, body, div, main, article, code, textarea {
   @include scrollbars(.5em, $disabled);
+}
+
+
+main{
+  height: auto;
 }

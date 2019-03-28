@@ -1,15 +1,10 @@
-@import './colors';
-// @required
-@import './helper';
-// @required
-@import './animations';
-// @required
 @import './normalize';
-// @required
+@import './colors';
+@import './helper';
 @import './variables';
-// @required
 @import './fonts';
-// @required
+@import './animations';
+// until here all files are required
 @import './grid';
 @import './base';
 @import './components/input';

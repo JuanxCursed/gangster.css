@@ -1,3 +1,13 @@
+[hide] {
+  display: none;
+  visibility: hidden;
+}
+
+[show] {
+  display: inline-block;
+  visibility: visible;
+}
+
 div,
 main,
 aside,
@@ -6,7 +16,23 @@ header,
 footer {
   &[#{$grid-prop-name}] {
     display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 1px;
+      padding-right: $grid-column-gap / 2 * 1px;
+      padding-left: $grid-column-gap / 2 * 1px;
+      flex: 0 0 auto;
+    }
   }
+}
+
+
+[flex] {
+  display: flex;
 }
 
 [nowrap] {
@@ -25,8 +51,8 @@ footer {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  margin-right: -$grid-column-gap / 2;
-  margin-left: -$grid-column-gap / 2;
+  margin-right: -$grid-column-gap / 2 * 1px;
+  margin-left: -$grid-column-gap / 2 * 1px;
   flex: 0 1 auto;
   flex-wrap: wrap;
 
@@ -36,54 +62,55 @@ footer {
     flex-wrap: nowrap;
   }
 
-  &[justify-start] {
-    justify-content: flex-start;
-  }
-
-  &[justify-end] {
-    justify-content: flex-end;
-  }
-
-  &[justify-center] {
-    justify-content: center;
-  }
-
-  &[justify-between] {
-    justify-content: space-between;
-  }
-
-  &[justify-around] {
-    justify-content: space-around;
-  }
-
-  &[reverse] {
+  &[#{$reverse-prop-name}] {
     flex-direction: row-reverse;
   }
 
-  &[align-top] {
-    align-items: flex-start;
+
+  @each $type, $value in $map-grid-types-values {
+    @if $value != 'baseline' {
+      &[#{$justify-prop-name}#{$type}] {
+        justify-content: #{$value};
+      }
+    }
   }
 
-  &[align-bottom] {
-    align-items: flex-end;
+  &[#{$justify-prop-name}between] {
+    justify-content: space-between;
   }
 
-  &[align-middle] {
-    align-items: center;
+  &[#{$justify-prop-name}around] {
+    justify-content: space-around;
   }
 
-  &[align-baseline] {
-    align-items: baseline;
+  @each $type, $value in $map-grid-types-values {
+    &[#{$align-items-prop-name}#{$type}] {
+      align-items: #{$value};
+    }
+  }
+  @each $type, $value in $map-grid-types-values {
+    &[#{$align-content-prop-name}#{$type}] {
+      align-content: #{$value};
+    }
   }
 
-  &[align-stretch] {
-    align-items: stretch;
+
+  @each $type, $value in $map-grid-types-values {
+    [#{$align-self-prop-name}#{$type}] {
+      align-self: #{$value};
+    }
   }
 
-  [flex-item] {
+  @each $type, $value in $map-grid-types-values {
+    [#{$place-content-prop-name}#{$type}] {
+      place-content: #{$value};
+    }
+  }
+
+  [#{$flex-item-prop-name}] {
     flex: 0 0 auto;
 
-    &[grow] {
+    &[#{$grow-prop-name}] {
       flex-grow: 1;
     }
   }
@@ -102,33 +129,29 @@ footer {
   flex-direction: row;
 }
 
-[hide] {
-  display: none;
-  visibility: hidden;
-}
-
-[show] {
-  display: inline-block;
-  visibility: visible;
-}
-
-[#{$width-prop-name}^=""],
-[#{$width-prop-name}*=""] {
+[#{$width-prop-name}^=''],
+[#{$width-prop-name}*=''] {
   position: relative;
   box-sizing: border-box;
   width: 100%;
   min-height: 1px;
-  padding-right: $grid-column-gap / 2;
-  padding-left: $grid-column-gap / 2;
+  padding-right: $grid-column-gap / 2 * 1px;
+  padding-left: $grid-column-gap / 2  * 1px;
   flex: 0 0 auto;
 }
 
+@for $i from 0 through $helper-amount {
+  [#{$order-prop-name}#{$i}] {
+    order: $i;
+  }
+}
 
 @each $prop-name, $prop in $map-props {
   @for $i from 0 through $helper-amount {
     [#{$prop-name}#{$i}] {
       #{$prop}: $i * $helper-step * 1px;
     }
+
     @each $side-prop, $side in $map-props-sides {
       [#{$prop-name}#{$side-prop}#{$i}] {
         #{$prop}-#{$side}: $i * $helper-step * 1px;
@@ -154,17 +177,11 @@ footer {
       box-sizing: border-box;
       margin-right: auto;
       margin-left: auto;
-      padding-right: $grid-column-gap;
-      padding-left: $grid-column-gap;
+      padding-right: $grid-column-gap * 1px;
+      padding-left: $grid-column-gap * 1px;
       max-width: $boxed-size - $boxed-step * $index * 1%;
       width: 100%;
       @include clearfix;
-    }
-    [#{$hidden-prop-name}#{$bp}#{$up-prop-name}] {
-      display: none !important;
-    }
-    [#{$hidden-prop-name}#{$bp}#{$down-prop-name}] {
-      display: none !important;
     }
   } @else {
     @include media-builder($breakpoint) {
@@ -177,10 +194,13 @@ footer {
         display: none !important;
       }
       [#{$boxed-prop-name}#{$bp}#{$down-prop-name}] {
-        max-width: $boxed-size - $boxed-step * $index * 1%;
+        //max-width: $boxed-size - $boxed-step * $index * 1%;
+        max-width: percentage($boxed-size - $boxed-step * $index);
+        flex: 0 0 percentage($boxed-size - $boxed-step * $index);
       }
     }
   }
 }
+
 //max-width: percentage($i / $columns);
 //flex: 0 0 percentage($i / $columns);

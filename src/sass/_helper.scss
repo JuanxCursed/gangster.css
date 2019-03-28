@@ -16,8 +16,8 @@
     @for $i from 1 through $grid-column-count {
       [#{$bp}#{$width-prop-name}#{$i}] {
         //flex-basis: (100 / ($grid-column-count / $i)) * 1%;
-        max-width: percentage($i / $grid-column-count);
-        flex: 0 0 percentage($i / $grid-column-count);
+        max-width: calc(#{percentage($i / $grid-column-count)} - #{$grid-column-gap / 2} * 1px);
+        flex: 0 0 calc(#{percentage($i / $grid-column-count)} - #{$grid-column-gap / 2} * 1px);
       }
     }
     // column offset

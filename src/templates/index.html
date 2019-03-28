@@ -3,86 +3,97 @@
 <head>
     <title>Gangster.CSS Docs</title>
     <link rel="stylesheet" href="../../dist/css/gangster.css">
+    <meta charset="utf-8">
     <script src="../js/index.js" defer></script>
 </head>
 <body>
-<header grid>
+<header grid row ai-center>
     <nav w-4>
-        <ul>
-            <li><a href="#!" button><span>Test Link</span></a></li>
-            <li><a href="#!" button><span>Test Link</span></a></li>
-            <li><a href="#!" button><span>Test Link</span></a></li>
-            <li><a href="#!" button><span>Test Link</span></a></li>
+        <ul pl-4>
+            <li><a href="#!" button><span>Notícias</span></a></li>
+            <li><a href="#!" button><span>Gameplays</span></a></li>
+            <li><a href="#!" button><span>Análises</span></a></li>
+            <li><a href="#!" button><span>Podcasts</span></a></li>
         </ul>
     </nav>
-    <h1 w-4>
-        <img src="../img/gangster.css.svg" alt="">
-    </h1>
-    <nav w-4 text-right>
-        <a href="#!">
+    <div w-4 row>
+        <a href rel="home">
+            <img src="../img/mg.svg" alt="Logo">
+        </a>
+        <h1 hide>Married Games</h1>
+    </div>
+    <nav w-4 pc-end>
+        <a href="#!" p3>
             <i icon>person</i>
         </a>
     </nav>
+    \
 </header>
 <main grid>
-    <aside w-2>
-        <nav>
-            <ul>
-                <li><a href="#!" button><span>Link</span></a></li>
-                <li><a href="#!" button><span>Link</span></a></li>
-                <li><a href="#!" button><span>Link</span></a></li>
-                <li><a href="#!" button><span>Link</span></a></li>
-            </ul>
-        </nav>
-    </aside>
-    <div w-10 p-1>
-        <form action="">
-            <div w-6>
-                <div input>
-                    <input type="text" id="text" required>
-                    <label for="text">Nome</label>
-                </div>
-            </div>
-            <div w-6>
-                <div input>
-                    <input type="email" id="text" required>
-                    <label for="text">E-mail</label>
-                </div>
-            </div>
-            <div>
-                <div checkbox>
-                    <input type="checkbox" id="checkbox-1">
-                    <label for="checkbox-1">Campo de checkbox</label>
-                </div>
-                <div checkbox>
-                    <input type="checkbox" id="checkbox-2">
-                    <label for="checkbox-2">Campo de checkbox</label>
-                </div>
-            </div>
-            <div>
-                <div radio>
-                    <input type="radio" id="radio-1" name="radio[]">
-                    <label for="radio-1">Campo de radio</label>
-                </div>
-                <div radio>
-                    <input type="radio" id="radio-2" name="radio[]">
-                    <label for="radio-2">Campo de radio</label>
-                </div>
-            </div>
-
-        </form>
-
-        <div card horizontal>
-            <img src="//placehold.it/500">
-            <h5>titulo</h5>
-            <p>lorem ipsum dolor at met</p>
+    <div w-10 grid pt-5 content-between>
+        <div w-3>
+            <figure overlay>
+                <a href="cards.html" title="{{title}}">
+                    <img src="//lorempixel.com/350/386" alt="{{title}}" title="{{title}}">
+                </a>
+                <figcaption>
+                    <h2 truncate>
+                        <a href="cards.html" title="{{title}}">{{title}}</a>
+                    </h2>
+                    <h3>
+                        <a href="cards.html" title="{{category}}">{{category}}</a>
+                    </h3>
+                    <p hide>{{excerpt}}</p>
+                    <p>
+                        <small>{{publish_at}} | <a href="cards.html" title="{{author}}">{{author}}</a></small>
+                    </p>
+                </figcaption>
+            </figure>
         </div>
-        <div card>
-            <img src="//placehold.it/500">
-            <h5>titulo</h5>
-            <p>lorem ipsum dolor at met</p>
+        <div w-9>
+            <figure horizontal>
+                <a href="cards.html" title="{{title}}">
+                    <img src="//lorempixel.com/260/120" alt="{{title}}">
+                </a>
+                <figcaption>
+                    <h2 truncate>
+                        <a href="cards.html" title="{{title}}">{{title}}</a>
+                    </h2>
+                    <h3>
+                        <a href="cards.html" title="{{category}}">{{category}}</a></h3>
+                    <p>
+                        {{excerpt}}
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit... Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit... Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                    </p>
+                    <p>
+                        <small>{{publish_at}} | <a href="cards.html" title="{{author}}">{{author}}</a></small>
+                    </p>
+                </figcaption>
+            </figure>
         </div>
     </div>
+    <aside w-2>
+        <h3>Destaques</h3>
+        <figure vertical>
+            <a href="cards.html" title="{{title}}">
+                <img src="//lorempixel.com/350/386" alt="{{title}}" title="{{title}}">
+            </a>
+            <figcaption>
+                <h2 truncate>
+                    <a href="cards.html" title="{{title}}">{{title}}</a>
+                </h2>
+                <h3>
+                    <a href="cards.html" title="{{category}}">{{category}}</a>
+                </h3>
+                <p hide>{{excerpt}}</p>
+                <p>
+                    <small>{{publish_at}} | <a href="cards.html" title="{{author}}">{{author}}</a></small>
+                </p>
+            </figcaption>
+        </figure>
+
+    </aside>
 </main>
 </body>
 </html>

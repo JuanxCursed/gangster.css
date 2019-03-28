@@ -14,24 +14,49 @@
 // ==================================================
 // Props names
 // ==================================================
-$grid-prop-name: 'grid' !default;
-$width-prop-name: 'w-' !default;
-$offset-prop-name: 'o-' !default;
 $hidden-prop-name: 'h-' !default;
+
+$grid-prop-name: 'grid' !default;
+$boxed-prop-name: 'b-' !default;
+$width-prop-name: 'w-' !default;
+$offset-prop-name: 'off-' !default;
+
+$justify-prop-name: 'j-' !default;
+$align-self-prop-name: 'as-' !default;
+$align-items-prop-name: 'ai-' !default;
+$align-content-prop-name: 'ac-' !default;
+$place-content-prop-name: 'pc-' !default;
+$order-prop-name: 'order-' !default;
+
+$start-prop-name: 'start' !default;
+$end-prop-name: 'end' !default;
+$center-prop-name: 'center' !default;
+$baseline-prop-name: 'baseline' !default;
+$stretch-prop-name: 'stretch' !default;
+
+
 $grid-bp-xs-prop-name: 'xs-' !default;
 $grid-bp-sm-prop-name: 'sm-' !default;
 $grid-bp-md-prop-name: 'md-' !default;
 $grid-bp-lg-prop-name: 'lg-' !default;
 $grid-bp-xl-prop-name: 'xl-' !default;
+
+$reverse-prop-name: 'reverse' !default;
+$flex-item-prop-name: 'flex-item' !default;
+$grow-prop-name: 'g' !default;
+
 $up-prop-name: 'up' !default;
 $down-prop-name: 'down' !default;
+
 $padding-prop-name: 'p' !default;
 $margin-prop-name: 'm' !default;
 $border-prop-name: 'b' !default;
+
 $side-top-prop-name: 't-' !default;
 $side-right-prop-name: 'r-' !default;
 $side-bottom-prop-name: 'b-' !default;
 $side-left-prop-name: 'l-' !default;
+
 $button-prop-name: 'button' !default;
 $input-prop-name: 'input' !default;
 $checkbox-prop-name: 'chk' !default;
@@ -46,7 +71,7 @@ $tabs-prop-name: 'tabs' !default;
 // Default Sizes
 // ==================================================
 $radius: 3rem;
-
+$default-border-size: 1;
 
 // ==================================================
 // Colors Default
@@ -57,7 +82,7 @@ $warning: color('orange', 'base');
 $alert: color('yellow', 'base');
 $primary: color('blue', 'base');
 $primary-background: linear-gradient(175deg, $primary, darken($primary, 20%));
-$secundary: color('purple', 'base');
+$secundary: color('orange', 'base');
 $secundary-background: linear-gradient(175deg, $secundary, darken($secundary, 20%));
 $disabled: color('grey', 'lighten-1');
 [success] {
@@ -100,11 +125,8 @@ $disabled: color('grey', 'lighten-1');
 // Grid
 // ==================================================
 $grid-column-count: 12 !default;
-$grid-column-gap: 10px !default;
+$grid-column-gap: 30 !default;
 $grid-column-padding: 20 !default;
-//$gutter: 10px;
-//$spacing: 20;
-
 
 $grid-bp-sm: 600 !default;
 $grid-bp-md: 800 !default;
@@ -119,10 +141,18 @@ $map-grid-bp: (
         $grid-bp-xl-prop-name: $grid-bp-xl
 );
 
-$boxed-prop-name: 'boxed' !default;
 $boxed-limit: 1440 !default;
 $boxed-size: 240 !default;
 $boxed-step: 4 !default;
+
+$map-grid-types-values: (
+        $start-prop-name:'flex-start',
+        $end-prop-name:'flex-end',
+        $center-prop-name:'center',
+        $baseline-prop-name:'baseline',
+        $stretch-prop-name:'stretch',
+);
+
 
 // ==================================================
 // Helpers
@@ -143,12 +173,3 @@ $map-props-sides: (
         #{$side-left-prop-name}: 'left'
 );
 
-$default-border-size: 1;
-// ==================================================
-// Header
-// ==================================================
-
-
-// ==================================================
-// Nav
-// ==================================================

@@ -1,25 +1,26 @@
+$sidebar-height: calc(100vh - 80px);
+
 aside {
   flex-direction: column;
-  background: #555;
-  height: calc(100vh - 70px);
-  display: flex;
-  > nav{
+  height: $sidebar-height;
+  > nav {
     ul {
-      display: block;
-      width: 100%;
+      flex-direction: column;
+      flex-grow: 1;
+      place-content: center;
+      height: $sidebar-height;
+
       li {
+        display: flex;
+        text-align: center;
+        margin-right: 0 !important;
+
         h3, [h3], h4, [h4], h5, [h5] {
-          border-bottom: 3px dotted #cccccc;
         }
 
-        display: flex;
-        flex: 1;
-        margin-right: 0 !important;
-        text-align: center;
-
         button, a, [button] {
-          flex: 1;
-          justify-content: center;
+          flex-grow: 1;
+          margin: 8px 18px;
         }
       }
     }

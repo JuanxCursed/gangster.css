@@ -1,4 +1,5 @@
 body > header {
+  max-width: 100%;
   height: 80px;
   background: $primary-background;
   box-shadow: 0 0 .3rem .1rem color('blue-grey', 'darken-2');
